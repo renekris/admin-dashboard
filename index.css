@@ -1,3 +1,9 @@
+:root {
+    --sidebar-color: #1992d4;
+    --button-color: #1992d4;
+    --main-content-background: #e2e8f0;
+}
+
 *,
 *::before,
 *::after {
@@ -21,12 +27,13 @@ body {
 .sidebar {
     display: flex;
     flex-direction: column;
-    width: min-content;
+    width: 5rem;
     height: 100vh;
     width: 100%;
     padding: 10%;
-    background-color: cornflowerblue;
+    background-color: var(--sidebar-color);
     grid-area: 1 / 1 / span 2 / span 1;
+    z-index: 10;
 }
 
 .sidebar .nav-header {
@@ -68,18 +75,20 @@ nav ul li a {
 .header {
     background-color: white;
     grid-area: 1 / 2 / span 1 / span 1;
+    box-shadow: 0 0 0.7rem #8f9baa;
+    z-index: 5;
 }
 
 .top-header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
+    margin: 1rem 2rem;
 }
 
 .top-header form {
     display: flex;
-    margin: 0 10% 0 2rem;
+    margin: 0 10% 0 0;
     flex: 1;
 }
 
@@ -126,7 +135,7 @@ nav ul li a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem;
+    margin: 0 2rem 1rem 2rem;
 }
 
 .bottom-header-user {
@@ -141,27 +150,79 @@ nav ul li a {
 
 .profile-picture {
     border-radius: 100%;
-    margin-left: 2rem;
     margin-right: 1rem;
 }
 
 .header-top-name {
     font-weight: bold;
-    margin-right: 5%;
 }
 
 .action-buttons button {
-    border-radius: 50px;
+    margin: 0 0.5rem;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     border: none;
     color: white;
-    background-color: #1992d4;
+    background-color: var(--button-color);
     font-weight: bold;
+    border-radius: 50px;
 }
 
 .main-content {
-    background-color: rgb(201, 201, 201);
+    display: grid;
+    grid-template: 1fr 1fr / 3fr 1fr;
+    background-color: var(--main-content-background);
     grid-area: 2 / 2 / span 1 / span 1;
     overflow: auto;
+    padding: 2rem 1rem;
+}
+
+.primary {
+    grid-area: 1 / 1 / span 2 / span 1;
+}
+
+.secondary {
+    grid-area: 1 / 2 / span 1 / span 1;
+}
+
+.tertiary {
+    grid-area: 2 / 2 / span 1 / span 1;
+}
+
+.primary h2:first-of-type,
+.secondary h2:first-of-type,
+.tertiary h2:first-of-type {
+    margin-bottom: 1rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    display: grid;
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 0.5rem solid #f0b429;
+    background-color: white;
+    box-shadow: 0 0.2rem 0.3rem #8f9baa;
+}
+
+.card-content h3 {
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    color: #727272;
+    line-height: 1.1rem;
+}
+
+.card-links {
+    display: flex;
+    gap: 1rem;
+    height: fit-content;
+    justify-self: end;
+    align-self: end;
 }
